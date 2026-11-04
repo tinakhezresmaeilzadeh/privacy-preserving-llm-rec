@@ -32,13 +32,13 @@ plays the cloud recommender, and the product labels used for evaluation come fro
 
 ## Highlights
 
-- **Keeps 75% of sensitive purchases on the device**, with category hit rate and semantic similarity statistically
-  indistinguishable from sending the full history (1,295 users, paired bootstrap).
-- **The deobfuscator matters where it is meant to.** For users whose next purchase is sensitive, removing sensitive
-  products costs relevance (semantic similarity −0.033, significant); the on-device deobfuscator closes the gap
-  (−0.011, not significant).
-- **Cheap on the device.** The BERT obfuscator takes 0.04 s and the Llama-3.2-1B deobfuscator 1.1 s and 2.4 GB per user
-  (one RTX A6000, batch size 1).
+- **Keeps 75% of sensitive purchases on the device.** No significant difference from sending the full history was
+  detected in category hit rate or semantic similarity (1,295 users, paired bootstrap).
+- **For users whose next purchase is sensitive** (exploratory analysis), withholding sensitive products lowers semantic
+  similarity (−0.033, significant); with the on-device deobfuscator the remaining difference is −0.011 (not
+  significant).
+- **Cost per user** (batch size 1): the BERT obfuscator takes 0.04 s on an RTX A6000 and 0.87 s on a CPU (8 threads);
+  the Llama-3.2-1B deobfuscator takes 1.1 s on the GPU and 15.6 s on the CPU.
 - **Fully local, reproducible evaluation.** Open models in every role, no user data sent to any API.
 
 ## How it works
@@ -71,9 +71,10 @@ sensitive ones.
 </p>
 
 Averaged over all users, the deobfuscator's contribution with BERT is small, because 89% of next purchases are not
-sensitive. For the 144 users whose next purchase **is** sensitive, it is what keeps the recommendations relevant: BERT
-obfuscation alone falls to 0.308 semantic similarity (baseline 0.341), and adding the deobfuscator brings it back to
-0.330. For categorical deletion the deobfuscator raises category HR@10 for these users from 0.208 to 0.688.
+sensitive. For the 144 users whose next purchase is sensitive, BERT obfuscation alone falls to 0.308 semantic
+similarity (baseline 0.341), and adding the deobfuscator raises it to 0.330. For categorical deletion the deobfuscator
+raises category HR@10 for these users from 0.208 to 0.688. Reference lists that use no LLM reach similar category hit
+rates, so these measures compare configurations rather than establish recommendation quality; see the paper.
 
 <details>
 <summary><b>Full results table</b> (generated from <code>results/results.csv</code>)</summary>
