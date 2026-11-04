@@ -2,8 +2,9 @@
 w_c = N / (2 N_c)), 5 epochs, lr 2e-5, weight decay 0.01, batch 16, inputs truncated to 256 tokens; 70/20/10 split
 stratified by label; the epoch with the best validation F1 is kept.
 
-Input: JSONL, one product per line with title, main_category, features (list) and label (1 = sensitive, 0 = nonsensitive).
-Usage: python scripts/train_obfuscator.py --data products_labelled.jsonl --out models/bert_obfuscator"""
+Input: JSONL, one product per line, either with the released fields text (already in the obfuscator's input format) and
+label ("sensitive" / "nonsensitive"), or with title, main_category, features (list) and label (1 / 0).
+Usage: python scripts/train_obfuscator.py --data data/obfuscator_training_labels.jsonl --out models/bert_obfuscator"""
 import argparse, json, os, sys
 import numpy as np, torch
 from transformers import BertTokenizer, BertForSequenceClassification
@@ -16,7 +17,8 @@ ap.add_argument("--epochs", type=int, default=5); ap.add_argument("--seed", type
 args = ap.parse_args()
 torch.manual_seed(args.seed); rng = np.random.default_rng(args.seed)
 rows = [json.loads(l) for l in open(args.data) if l.strip()]
-y = np.array([int(r["label"]) for r in rows])
+y = np.array([1 if r["label"] in (1, "1", "sensitive") else 0 for r in rows])
+text = lambda r: r["text"] if "text" in r else bert_text({"features": [], **r})
 idx = {"train": [], "val": [], "test": []}
 for c in (0, 1):  # stratified 70/20/10
     ii = rng.permutation(np.flatnonzero(y == c)); a, b = int(0.7 * len(ii)), int(0.9 * len(ii))
@@ -29,7 +31,7 @@ def batches(ii, bs, shuffle):
     ii = rng.permutation(ii) if shuffle else np.array(ii)
     for i in range(0, len(ii), bs):
         b = ii[i:i + bs]
-        enc = tok([bert_text({"features": [], **rows[j]}) for j in b], return_tensors="pt", truncation=True, padding=True, max_length=256)
+        enc = tok([text(rows[j]) for j in b], return_tensors="pt", truncation=True, padding=True, max_length=256)
         yield enc.to(dev), torch.tensor(y[b], device=dev)
 
 n_c = np.bincount(y[idx["train"]], minlength=2); w = torch.tensor(len(idx["train"]) / (2 * n_c), dtype=torch.float, device=dev)

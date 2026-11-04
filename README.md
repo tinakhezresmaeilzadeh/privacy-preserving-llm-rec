@@ -117,6 +117,7 @@ scripts/
   evaluate.py           all metrics, paired tests and the split by target type
   make_figures.py       the figures in this README and the paper
 results/                aggregate results of the paper's run (no user identifiers)
+data/                   GPT-4o labels of the obfuscator's 10,012 training products
 figures/
 ```
 
@@ -129,8 +130,8 @@ pip install -r requirements.txt
 #    https://amazon-reviews-2023.github.io/ into data/amazon2023/
 #    (<Category>.jsonl and meta_<Category>.jsonl).
 
-# 2. Obfuscator: train it on labelled products, or ask us for the trained weights.
-python scripts/train_obfuscator.py --data products_labelled.jsonl --out models/bert_obfuscator
+# 2. Obfuscator: download the fine-tuned weights (see "Released artefacts"), or train them from the released labels.
+python scripts/train_obfuscator.py --data data/obfuscator_training_labels.jsonl --out models/bert_obfuscator
 
 # 3. Pipeline (GPU; about 20 GPU-hours on one RTX A6000 for 1,295 users and three deobfuscators)
 python scripts/run_pipeline.py --data-dir data/amazon2023 --users users.txt \
@@ -147,6 +148,18 @@ authors on request; any engaged users (at least 30 reviewed products in the ten 
 **Hardware used:** 2× NVIDIA RTX A6000 (48 GB), AMD Ryzen Threadripper 3970X (32 cores), 128 GB RAM. All models are loaded from the Hugging Face Hub
 (`Qwen/Qwen3.5-9B`, `Qwen/Qwen3.5-2B`, `Qwen/Qwen3.5-4B`, `meta-llama/Llama-3.2-1B-Instruct`,
 `sentence-transformers/all-MiniLM-L6-v2`, `bert-base-uncased`). For Llama-3.2-1B we used `unsloth/Llama-3.2-1B-Instruct`, an ungated copy of the same weights.
+
+## Released artefacts
+
+| Artefact | Where |
+|---|---|
+| Code, prompts, aggregate results, figures | this repository |
+| Obfuscator training labels (10,012 products, GPT-4o, product metadata only) | `data/obfuscator_training_labels.jsonl` |
+| Fine-tuned BERT obfuscator | Hugging Face Hub: `HF_MODEL_ID` |
+
+The evaluation users' identifiers are not published. Labels for the products in their histories are available from
+the authors on request, because the list of those products would allow the selected users to be approximately
+reconstructed from the public dataset.
 
 ## Citation
 
