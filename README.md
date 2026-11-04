@@ -41,6 +41,30 @@ plays the cloud recommender, and the product labels used for evaluation come fro
   the Llama-3.2-1B deobfuscator takes 1.1 s on the GPU and 15.6 s on the CPU.
 - **Fully local, reproducible evaluation.** Open models in every role, no user data sent to any API.
 
+## Use it in front of any hosted LLM
+
+The server is treated as a black box. The framework changes only which purchases go into the request, so it works
+with any hosted LLM recommender, with no access to its weights and no change on the provider's side. The obfuscator
+(110M parameters) and the deobfuscator (1B–4B) run on the user's machine.
+
+```python
+from privrec.client import PrivateRecommender
+
+def server(prompt):            # any hosted LLM: wrap your provider's chat API here
+    return my_provider_chat(prompt)
+
+rec = PrivateRecommender(server, bert_dir="path/to/bert-obfuscator",
+                         local_model="unsloth/Llama-3.2-1B-Instruct", device="cpu")
+history = [{"title": "Blood Glucose Monitor Kit", "main_category": "Health & Personal Care",
+            "features": ["For diabetes testing"]},
+           {"title": "Stainless Steel Water Bottle 32oz", "main_category": "Sports & Outdoors",
+            "features": ["Insulated"]}]
+recommendations, n_kept_on_device = rec.recommend(history)
+```
+
+`server` receives only the products the obfuscator did not flag. The on-device model writes the recommendations for
+the withheld products while the server request is in flight, and the two lists are merged.
+
 ## How it works
 
 | Step | Where it runs | Model in the paper |
@@ -110,6 +134,7 @@ privrec/
   obfuscators.py   categorical rule, BERT obfuscator, split and merge counts
   llm.py           local generation with truncation handling, list parsing
   prompts.py       the four prompts of the paper (Appendix A), verbatim
+  client.py        PrivateRecommender: the framework in front of any hosted LLM (black-box server)
   metrics.py       Cat@10, Sim@10, retrieval HR / MRR, distances, leakage, paired bootstrap
 scripts/
   train_obfuscator.py   fine-tune the BERT obfuscator (focal loss)
@@ -164,8 +189,8 @@ reconstructed from the public dataset.
 ## Citation
 
 ```bibtex
-@article{khezresmaeilzadeh2025preserving,
-  title   = {Preserving Privacy and Utility in {LLM}-Based Product Recommendations},
+@article{khezresmaeilzadeh2025hybrid,
+  title   = {Hybrid Obfuscation and On-Device Deobfuscation for Privacy-Preserving {LLM}-Based Product Recommendation},
   author  = {Khezresmaeilzadeh, Tina and Zhang, Jiang and Andreadis, Dimitrios and Psounis, Konstantinos},
   journal = {arXiv preprint arXiv:2505.00951},
   year    = {2025}
