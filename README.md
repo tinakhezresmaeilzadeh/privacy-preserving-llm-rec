@@ -57,7 +57,7 @@ from privrec.client import PrivateRecommender
 def server(prompt):            # any hosted LLM: wrap your provider's chat API here
     return my_provider_chat(prompt)
 
-rec = PrivateRecommender(server, bert_dir="path/to/bert-obfuscator",
+rec = PrivateRecommender(server, bert_dir="tina-khezresmaeilzadeh/bert-sensitive-product-classifier",
                          local_model="unsloth/Llama-3.2-1B-Instruct", device="cpu")
 history = [{"title": "Blood Glucose Monitor Kit", "main_category": "Health & Personal Care",
             "features": ["For diabetes testing"]},
@@ -190,7 +190,7 @@ authors on request; any engaged users (at least 30 reviewed products in the ten 
 | Code, prompts, aggregate results, figures | this repository |
 | GPT-5 answers of the paper's run (3,875 responses, no user identifiers) | `results/gpt5/answers_*.jsonl` |
 | Obfuscator training labels (10,012 products, GPT-4o, product metadata only) | `data/obfuscator_training_labels.jsonl` |
-| Fine-tuned BERT obfuscator | Hugging Face Hub: `HF_MODEL_ID` |
+| Fine-tuned BERT obfuscator | [`tina-khezresmaeilzadeh/bert-sensitive-product-classifier`](https://huggingface.co/tina-khezresmaeilzadeh/bert-sensitive-product-classifier) |
 
 The evaluation users' identifiers are not published. Labels for the products in their histories are available from
 the authors on request, because the list of those products would allow the selected users to be approximately
