@@ -7,10 +7,14 @@
 **Tina Khezresmaeilzadeh · Jiang Zhang · Dimitrios Andreadis · Konstantinos Psounis**
 <br>University of Southern California
 
-[Paper (arXiv:2505.00951)](https://arxiv.org/abs/2505.00951) ·
+[![arXiv](https://img.shields.io/badge/arXiv-2505.00951-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2505.00951)
+[![Hugging Face model](https://img.shields.io/badge/Hugging%20Face-BERT%20obfuscator-FFD21E?logo=huggingface&logoColor=black)](https://huggingface.co/tina-khezresmaeilzadeh/bert-sensitive-product-classifier)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2a78d6)](LICENSE)
+
 [Method](#how-it-works) ·
 [Results](#results) ·
 [Reproduce](#reproducing-the-paper) ·
+[Model](https://huggingface.co/tina-khezresmaeilzadeh/bert-sensitive-product-classifier) ·
 [Citation](#citation)
 
 </div>
@@ -96,7 +100,7 @@ confidence intervals in the paper and in `results/gpt5/paired.csv`.
 | On-device only (Qwen3.5-4B) | 0.632 | 0.331 | 0.0 | 0.0 | 0.0 |
 | Category deletion | 0.463 | 0.301 | 10.2 | 11.7 | 56.5 |
 | Category deletion + on-device | 0.624 | 0.323 | 10.2 | 11.7 | 56.5 |
-| BERT withholding | 0.712 | 0.347 | 25.1 | 9.3 | 82.5 |
+| **BERT withholding** | **0.712** | **0.347** | **25.1** | **9.3** | **82.5** |
 | BERT withholding + on-device | 0.687 | 0.338 | 25.1 | 9.3 | 82.5 |
 
 The on-device model in the "+ on-device" rows is Llama-3.2-1B; `results/gpt5/results.csv` has every configuration and
@@ -116,12 +120,16 @@ category deletion, which withholds much more, the on-device model helps everyone
 
 ## What it does not protect against
 
-The framework guarantees that the purchases it withholds never reach the server. It does **not** stop the server from
-*inferring* a condition from the purchases it does receive: harmless-looking products can be revealing in combination.
-Item-level classification cannot see such patterns. Treat this as one layer of protection, not a guarantee of
-attribute privacy.
+> [!IMPORTANT]
+> The framework guarantees that the purchases it withholds never reach the server. It does **not** stop the server from
+> *inferring* a condition from the purchases it does receive: harmless-looking products can be revealing in combination.
+> Item-level classification cannot see such patterns. Treat this as one layer of protection, not a guarantee of
+> attribute privacy.
 
 ## Repository layout
+
+<details>
+<summary>Show the file tree</summary>
 
 ```
 privrec/
@@ -143,6 +151,8 @@ data/                   GPT-4o labels of the obfuscator's 10,012 training produc
 figures/
 ```
 
+</details>
+
 ## Reproducing the paper
 
 ```bash
@@ -152,7 +162,8 @@ pip install -r requirements.txt
 #    https://amazon-reviews-2023.github.io/ into data/amazon2023/
 #    (<Category>.jsonl and meta_<Category>.jsonl).
 
-# 2. Obfuscator: download the fine-tuned weights (see "Released artefacts"), or train them from the released labels.
+# 2. Obfuscator: use the released weights (--bert-dir tina-khezresmaeilzadeh/bert-sensitive-product-classifier),
+#    or train them from the released labels.
 python scripts/train_obfuscator.py --data data/obfuscator_training_labels.jsonl --out models/bert_obfuscator
 
 # 3. Labels, BERT decisions, on-device recommendations and the open server
@@ -190,7 +201,7 @@ authors on request; any engaged users (at least 30 reviewed products in the ten 
 | Code, prompts, aggregate results, figures | this repository |
 | GPT-5 answers of the paper's run (3,875 responses, no user identifiers) | `results/gpt5/answers_*.jsonl` |
 | Obfuscator training labels (10,012 products, GPT-4o, product metadata only) | `data/obfuscator_training_labels.jsonl` |
-| Fine-tuned BERT obfuscator | [`tina-khezresmaeilzadeh/bert-sensitive-product-classifier`](https://huggingface.co/tina-khezresmaeilzadeh/bert-sensitive-product-classifier) |
+| Fine-tuned BERT obfuscator | [![Hugging Face](https://img.shields.io/badge/🤗-bert--sensitive--product--classifier-FFD21E)](https://huggingface.co/tina-khezresmaeilzadeh/bert-sensitive-product-classifier) |
 
 The evaluation users' identifiers are not published. Labels for the products in their histories are available from
 the authors on request, because the list of those products would allow the selected users to be approximately
