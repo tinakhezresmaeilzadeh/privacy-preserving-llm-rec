@@ -1,0 +1,241 @@
+target,a,b,metric,diff,lo,hi,significant
+all,BERT obf. + deobf. (R''),Baseline (R),cat_hr,-0.03552123552123552,-0.05714285714285714,-0.012335907335907354,True
+all,BERT obf. + deobf. (R''),Baseline (R),sem_sim,-0.005762674530040343,-0.011924546101925225,0.0007178917225867383,False
+all,BERT obf. + deobf. (R''),Baseline (R),hr10,-0.0023166023166023165,-0.006177606177606178,0.0015444015444015444,False
+all,BERT obf. + deobf. (R''),Baseline (R),ret_hr1000,-0.003861003861003861,-0.018532818532818532,0.010810810810810811,False
+all,BERT obf. only (R'),Baseline (R),cat_hr,-0.010810810810810811,-0.030115830115830116,0.011583011583011582,False
+all,BERT obf. only (R'),Baseline (R),sem_sim,0.0030236107588504733,-0.0026582398329606156,0.008520512730170859,False
+all,BERT obf. only (R'),Baseline (R),hr10,-0.0023166023166023165,-0.006177606177606178,0.0015444015444015444,False
+all,BERT obf. only (R'),Baseline (R),ret_hr1000,-0.003088803088803089,-0.017007722007722006,0.010810810810810811,False
+all,BERT obf. + deobf. (R''),BERT obf. only (R'),cat_hr,-0.02471042471042471,-0.0416988416988417,-0.008474903474903494,True
+all,BERT obf. + deobf. (R''),BERT obf. only (R'),sem_sim,-0.008786285288890817,-0.013113824235253813,-0.004177385040102203,True
+all,BERT obf. + deobf. (R''),BERT obf. only (R'),hr10,0.0,0.0,0.0,False
+all,BERT obf. + deobf. (R''),BERT obf. only (R'),ret_hr1000,-0.0007722007722007722,-0.010038610038610039,0.007722007722007722,False
+all,Categorical obf. + deobf. (R''),Baseline (R),cat_hr,-0.09884169884169884,-0.12277992277992278,-0.07644787644787644,True
+all,Categorical obf. + deobf. (R''),Baseline (R),sem_sim,-0.020338164905668685,-0.027366358803146477,-0.013102692218288838,True
+all,Categorical obf. + deobf. (R''),Baseline (R),hr10,-0.0007722007722007722,-0.005405405405405406,0.003861003861003861,False
+all,Categorical obf. + deobf. (R''),Baseline (R),ret_hr1000,-0.006177606177606178,-0.02084942084942085,0.007741312741312724,False
+all,Categorical obf. only (R'),Baseline (R),cat_hr,-0.2594594594594595,-0.28803088803088805,-0.22857142857142856,True
+all,Categorical obf. only (R'),Baseline (R),sem_sim,-0.04258605750946465,-0.05019969826844668,-0.035509204343105144,True
+all,Categorical obf. only (R'),Baseline (R),hr10,0.0007722007722007722,-0.004633204633204633,0.005405405405405406,False
+all,Categorical obf. only (R'),Baseline (R),ret_hr1000,-0.010038610038610039,-0.02318532818532818,0.003861003861003861,False
+all,Categorical obf. + deobf. (R''),Categorical obf. only (R'),cat_hr,0.16061776061776062,0.1305019305019305,0.1892084942084942,True
+all,Categorical obf. + deobf. (R''),Categorical obf. only (R'),sem_sim,0.02224789260379596,0.015098472879228676,0.029664160015572105,True
+all,Categorical obf. + deobf. (R''),Categorical obf. only (R'),hr10,-0.0015444015444015444,-0.003861003861003861,0.0,False
+all,Categorical obf. + deobf. (R''),Categorical obf. only (R'),ret_hr1000,0.003861003861003861,-0.0069498069498069494,0.015444015444015444,False
+all,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),cat_hr,0.06332046332046332,0.0416988416988417,0.08648648648648649,True
+all,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),sem_sim,0.014575490375628343,0.008030195323441135,0.02080225156339669,True
+all,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),hr10,-0.0015444015444015444,-0.004633204633204633,0.0015444015444015444,False
+all,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),ret_hr1000,0.0023166023166023165,-0.013127413127413128,0.01776061776061776,False
+all,Baseline (R),Only local,cat_hr,0.20386100386100386,0.17527027027027026,0.23243243243243245,True
+all,Baseline (R),Only local,sem_sim,0.06891893753961707,0.06026696136510755,0.07809646075916868,True
+all,Baseline (R),Only local,hr10,0.0015444015444015444,-0.003088803088803089,0.006177606177606178,False
+all,Baseline (R),Only local,ret_hr1000,0.014671814671814672,-0.0007915057915057905,0.03166023166023166,False
+all,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),cat_hr,-0.040154440154440155,-0.06177606177606178,-0.01698841698841699,True
+all,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),sem_sim,-0.0026414607568827375,-0.009027099549971723,0.003695438239133726,False
+all,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),hr10,-0.0023166023166023165,-0.006177606177606178,0.0015444015444015444,False
+all,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),ret_hr1000,0.003088803088803089,-0.012374517374517374,0.018532818532818532,False
+all,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),cat_hr,-0.029343629343629343,-0.04633204633204633,-0.013127413127413128,True
+all,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),sem_sim,-0.005665071515733211,-0.009944406094525772,-0.0011802398019315665,True
+all,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),hr10,0.0,0.0,0.0,False
+all,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),ret_hr1000,0.006177606177606178,-0.003861003861003861,0.015444015444015444,False
+all,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),cat_hr,-0.0888030888030888,-0.11274131274131274,-0.06563706563706563,True
+all,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),sem_sim,-0.003504669847520622,-0.010772322025941146,0.004515732666657351,False
+all,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),hr10,-0.0007722007722007722,-0.005405405405405406,0.003861003861003861,False
+all,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),ret_hr1000,0.0007722007722007722,-0.013899613899613899,0.014671814671814672,False
+all,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),cat_hr,0.17065637065637065,0.13822393822393822,0.19847490347490346,True
+all,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),sem_sim,0.03908138766194402,0.03131534022994656,0.04714807273187175,True
+all,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),hr10,-0.0015444015444015444,-0.003861003861003861,0.0,False
+all,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),ret_hr1000,0.010810810810810811,-0.0007722007722007722,0.023938223938223938,False
+all,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],cat_hr,0.04864864864864865,0.027799227799227798,0.07106177606177604,True
+all,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],sem_sim,0.0008632090906378845,-0.005884571378424936,0.006969071710518197,False
+all,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],hr10,-0.0015444015444015444,-0.004633204633204633,0.0015444015444015444,False
+all,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],ret_hr1000,0.0023166023166023165,-0.013146718146718146,0.018532818532818532,False
+all,Baseline (R),Only local [Qwen3.5-2B],cat_hr,0.15444015444015444,0.1305019305019305,0.18146718146718147,True
+all,Baseline (R),Only local [Qwen3.5-2B],sem_sim,0.026792413017147985,0.01824924293405675,0.034376306697891656,True
+all,Baseline (R),Only local [Qwen3.5-2B],hr10,0.003088803088803089,0.0007722007722007722,0.006177606177606178,True
+all,Baseline (R),Only local [Qwen3.5-2B],ret_hr1000,-0.0069498069498069494,-0.02318532818532818,0.010038610038610039,False
+all,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),cat_hr,-0.036293436293436294,-0.05945945945945946,-0.013880308880308898,True
+all,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),sem_sim,-0.0025084014938835013,-0.00859734518539779,0.0038729416783970985,False
+all,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),hr10,-0.0023166023166023165,-0.006177606177606178,0.0015444015444015444,False
+all,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),ret_hr1000,-0.0007722007722007722,-0.01469111969111969,0.013899613899613899,False
+all,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),cat_hr,-0.025482625482625483,-0.0416988416988417,-0.009266409266409266,True
+all,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),sem_sim,-0.005532012252733975,-0.009950514232099746,-0.0007973328500295705,True
+all,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),hr10,0.0,0.0,0.0,False
+all,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),ret_hr1000,0.0023166023166023165,-0.0069498069498069494,0.012355212355212355,False
+all,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),cat_hr,-0.06872586872586872,-0.0918918918918919,-0.04631274131274133,True
+all,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),sem_sim,-0.0023173556853675475,-0.009551411665774681,0.00507307496979027,False
+all,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),hr10,-0.0007722007722007722,-0.005405405405405406,0.003861003861003861,False
+all,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),ret_hr1000,-0.005405405405405406,-0.02084942084942085,0.009266409266409266,False
+all,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),cat_hr,0.19073359073359072,0.15907335907335907,0.22009652509652508,True
+all,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),sem_sim,0.0402687018240971,0.03225064065321762,0.04851121170769902,True
+all,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),hr10,-0.0015444015444015444,-0.003861003861003861,0.0,False
+all,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),ret_hr1000,0.004633204633204633,-0.0069498069498069494,0.01776061776061776,False
+all,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],cat_hr,0.032432432432432434,0.011583011583011582,0.05405405405405406,True
+all,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],sem_sim,-0.00019104580851595374,-0.0068075838042818675,0.006461394548588735,False
+all,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],hr10,-0.0015444015444015444,-0.004633204633204633,0.0015444015444015444,False
+all,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],ret_hr1000,0.004633204633204633,-0.010038610038610039,0.02084942084942085,False
+all,Baseline (R),Only local [Qwen3.5-4B],cat_hr,0.09034749034749034,0.06793436293436295,0.11430501930501928,True
+all,Baseline (R),Only local [Qwen3.5-4B],sem_sim,0.012957033997538238,0.005033097841334619,0.02075879501259767,True
+all,Baseline (R),Only local [Qwen3.5-4B],hr10,0.0015444015444015444,-0.0023166023166023165,0.005405405405405406,False
+all,Baseline (R),Only local [Qwen3.5-4B],ret_hr1000,-0.004633204633204633,-0.02084942084942085,0.011583011583011582,False
+sensitive,BERT obf. + deobf. (R''),Baseline (R),cat_hr,0.027777777777777776,-0.034722222222222224,0.09027777777777778,False
+sensitive,BERT obf. + deobf. (R''),Baseline (R),sem_sim,-0.004732723347842693,-0.02330911116829763,0.013390698201126521,False
+sensitive,BERT obf. + deobf. (R''),Baseline (R),hr10,-0.006944444444444444,-0.020833333333333332,0.0,False
+sensitive,BERT obf. + deobf. (R''),Baseline (R),ret_hr1000,0.0,-0.034722222222222224,0.041666666666666664,False
+sensitive,BERT obf. only (R'),Baseline (R),cat_hr,-0.020833333333333332,-0.08350694444444443,0.041666666666666664,False
+sensitive,BERT obf. only (R'),Baseline (R),sem_sim,-0.02307815958435337,-0.04068510090259628,-0.006732412337118553,True
+sensitive,BERT obf. only (R'),Baseline (R),hr10,-0.006944444444444444,-0.020833333333333332,0.0,False
+sensitive,BERT obf. only (R'),Baseline (R),ret_hr1000,-0.020833333333333332,-0.05555555555555555,0.006944444444444444,False
+sensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),cat_hr,0.04861111111111111,0.006944444444444444,0.09722222222222222,True
+sensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),sem_sim,0.018345436236510675,0.004554169852700499,0.033409748411375194,True
+sensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),hr10,0.0,0.0,0.0,False
+sensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),ret_hr1000,0.020833333333333332,-0.013888888888888888,0.0625,False
+sensitive,Categorical obf. + deobf. (R''),Baseline (R),cat_hr,-0.09722222222222222,-0.16666666666666666,-0.027777777777777776,True
+sensitive,Categorical obf. + deobf. (R''),Baseline (R),sem_sim,-0.021372158856441576,-0.04140849758275888,-0.0023927536676637863,True
+sensitive,Categorical obf. + deobf. (R''),Baseline (R),hr10,-0.006944444444444444,-0.020833333333333332,0.0,False
+sensitive,Categorical obf. + deobf. (R''),Baseline (R),ret_hr1000,-0.006944444444444444,-0.04861111111111111,0.034722222222222224,False
+sensitive,Categorical obf. only (R'),Baseline (R),cat_hr,-0.5,-0.5902777777777778,-0.4097222222222222,True
+sensitive,Categorical obf. only (R'),Baseline (R),sem_sim,-0.093148603854287,-0.1164198716074073,-0.07013655926566571,True
+sensitive,Categorical obf. only (R'),Baseline (R),hr10,-0.006944444444444444,-0.020833333333333332,0.0,False
+sensitive,Categorical obf. only (R'),Baseline (R),ret_hr1000,-0.034722222222222224,-0.06944444444444445,0.0,False
+sensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),cat_hr,0.4027777777777778,0.3055555555555556,0.5,True
+sensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),sem_sim,0.07177644499784543,0.05012774540809914,0.09312081902042135,True
+sensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),hr10,0.0,0.0,0.0,False
+sensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),ret_hr1000,0.027777777777777776,-0.00017361111111110122,0.0625,False
+sensitive,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),cat_hr,0.125,0.062326388888888896,0.19444444444444445,True
+sensitive,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),sem_sim,0.016639435508598883,-0.0027913986925139195,0.037875478406850654,False
+sensitive,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),hr10,0.0,0.0,0.0,False
+sensitive,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),ret_hr1000,0.006944444444444444,-0.034722222222222224,0.05555555555555555,False
+sensitive,Baseline (R),Only local,cat_hr,0.14583333333333334,0.0763888888888889,0.2152777777777778,True
+sensitive,Baseline (R),Only local,sem_sim,0.048740699188783765,0.03026334347539685,0.07014519306443011,True
+sensitive,Baseline (R),Only local,hr10,0.006944444444444444,0.0,0.020833333333333332,False
+sensitive,Baseline (R),Only local,ret_hr1000,0.006944444444444444,-0.027777777777777776,0.04861111111111111,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),cat_hr,0.020833333333333332,-0.034722222222222224,0.0763888888888889,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),sem_sim,0.014198951837089326,-0.004055353807699349,0.03326067727628267,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),hr10,-0.006944444444444444,-0.020833333333333332,0.0,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),ret_hr1000,0.027777777777777776,-0.020833333333333332,0.0763888888888889,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),cat_hr,0.041666666666666664,0.0,0.09027777777777778,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),sem_sim,0.037277111421442695,0.019980573444627225,0.055167928524315346,True
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),hr10,0.0,0.0,0.0,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),ret_hr1000,0.04861111111111111,0.006944444444444444,0.09722222222222222,True
+sensitive,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),cat_hr,-0.027777777777777776,-0.0763888888888889,0.027777777777777776,False
+sensitive,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),sem_sim,0.02321998029947281,0.003204829737337099,0.04524736142872522,True
+sensitive,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),hr10,-0.006944444444444444,-0.020833333333333332,0.0,False
+sensitive,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),ret_hr1000,0.034722222222222224,-0.013888888888888888,0.08333333333333333,False
+sensitive,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),cat_hr,0.4722222222222222,0.3819444444444444,0.5694444444444444,True
+sensitive,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),sem_sim,0.11636858415375981,0.09129065539649067,0.14087035946302218,True
+sensitive,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),hr10,0.0,0.0,0.0,False
+sensitive,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),ret_hr1000,0.06944444444444445,0.027777777777777776,0.11805555555555555,True
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],cat_hr,0.04861111111111111,-0.006944444444444444,0.1111111111111111,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],sem_sim,-0.009021028462383483,-0.02746118223812017,0.009463062020950017,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],hr10,0.0,0.0,0.0,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],ret_hr1000,-0.006944444444444444,-0.04861111111111111,0.034722222222222224,False
+sensitive,Baseline (R),Only local [Qwen3.5-2B],cat_hr,0.10416666666666667,0.04843750000000001,0.16666666666666666,True
+sensitive,Baseline (R),Only local [Qwen3.5-2B],sem_sim,0.007497234826183153,-0.01655542279250868,0.028593859455496487,False
+sensitive,Baseline (R),Only local [Qwen3.5-2B],hr10,0.006944444444444444,0.0,0.020833333333333332,False
+sensitive,Baseline (R),Only local [Qwen3.5-2B],ret_hr1000,-0.04861111111111111,-0.10416666666666667,0.006944444444444444,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),cat_hr,0.013888888888888888,-0.04861111111111111,0.0763888888888889,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),sem_sim,0.006709711263991064,-0.011182376960965081,0.02515359526732936,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),hr10,-0.006944444444444444,-0.020833333333333332,0.0,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),ret_hr1000,0.0,-0.034722222222222224,0.041666666666666664,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),cat_hr,0.034722222222222224,-0.013888888888888888,0.08333333333333333,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),sem_sim,0.02978787084834443,0.01365057723208641,0.04618459702728109,True
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),hr10,0.0,0.0,0.0,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),ret_hr1000,0.020833333333333332,-0.013888888888888888,0.05555555555555555,False
+sensitive,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),cat_hr,-0.027777777777777776,-0.08350694444444443,0.027777777777777776,False
+sensitive,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),sem_sim,0.012004359806370404,-0.007544478023838665,0.03119187816240204,False
+sensitive,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),hr10,-0.006944444444444444,-0.020833333333333332,0.0,False
+sensitive,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),ret_hr1000,0.013888888888888888,-0.034722222222222224,0.0625,False
+sensitive,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),cat_hr,0.4722222222222222,0.375,0.5694444444444444,True
+sensitive,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),sem_sim,0.1051529636606574,0.08130436187881666,0.13150936223165546,True
+sensitive,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),hr10,0.0,0.0,0.0,False
+sensitive,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),ret_hr1000,0.04861111111111111,0.006944444444444444,0.09027777777777778,True
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],cat_hr,0.041666666666666664,-0.027777777777777776,0.11805555555555555,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],sem_sim,-0.005294648542379339,-0.02480959450541478,0.015116520099885124,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],hr10,0.0,0.0,0.0,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],ret_hr1000,-0.013888888888888888,-0.0625,0.034722222222222224,False
+sensitive,Baseline (R),Only local [Qwen3.5-4B],cat_hr,0.041666666666666664,-0.013888888888888888,0.09722222222222222,False
+sensitive,Baseline (R),Only local [Qwen3.5-4B],sem_sim,-0.005077826298980249,-0.026892978231060422,0.01642469738855854,False
+sensitive,Baseline (R),Only local [Qwen3.5-4B],hr10,0.006944444444444444,0.0,0.020833333333333332,False
+sensitive,Baseline (R),Only local [Qwen3.5-4B],ret_hr1000,-0.034722222222222224,-0.08333333333333333,0.013888888888888888,False
+nonsensitive,BERT obf. + deobf. (R''),Baseline (R),cat_hr,-0.043440486533449174,-0.0677671589921807,-0.01998262380538662,True
+nonsensitive,BERT obf. + deobf. (R''),Baseline (R),sem_sim,-0.0058915302817662005,-0.012726557038912144,0.0006282145926950549,False
+nonsensitive,BERT obf. + deobf. (R''),Baseline (R),hr10,-0.0017376194613379669,-0.006081668114682885,0.0017376194613379669,False
+nonsensitive,BERT obf. + deobf. (R''),Baseline (R),ret_hr1000,-0.004344048653344918,-0.019113814074717638,0.010425716768027803,False
+nonsensitive,BERT obf. only (R'),Baseline (R),cat_hr,-0.009556907037358819,-0.03301476976542137,0.013032145960034752,False
+nonsensitive,BERT obf. only (R'),Baseline (R),sem_sim,0.006289166735758686,0.00015658378466756632,0.012250469785044495,True
+nonsensitive,BERT obf. only (R'),Baseline (R),hr10,-0.0017376194613379669,-0.006081668114682885,0.0017376194613379669,False
+nonsensitive,BERT obf. only (R'),Baseline (R),ret_hr1000,-0.0008688097306689834,-0.015638575152041704,0.014791485664639423,False
+nonsensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),cat_hr,-0.03388357949609035,-0.052128583840139006,-0.016507384882710686,True
+nonsensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),sem_sim,-0.012180697017524887,-0.017039059272131434,-0.007821587830956711,True
+nonsensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),hr10,0.0,0.0,0.0,False
+nonsensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),ret_hr1000,-0.0034752389226759338,-0.013032145960034752,0.005212858384013901,False
+nonsensitive,Categorical obf. + deobf. (R''),Baseline (R),cat_hr,-0.09904430929626412,-0.12510860121633363,-0.07298001737619461,True
+nonsensitive,Categorical obf. + deobf. (R''),Baseline (R),sem_sim,-0.02020880336882134,-0.0281061483458895,-0.012230473183351145,True
+nonsensitive,Categorical obf. + deobf. (R''),Baseline (R),hr10,0.0,-0.005212858384013901,0.005212858384013901,False
+nonsensitive,Categorical obf. + deobf. (R''),Baseline (R),ret_hr1000,-0.006081668114682885,-0.020851433536055605,0.007841007819287557,False
+nonsensitive,Categorical obf. only (R'),Baseline (R),cat_hr,-0.22936576889661164,-0.26238053866203304,-0.20069504778453517,True
+nonsensitive,Categorical obf. only (R'),Baseline (R),sem_sim,-0.03626024806232788,-0.04430753619383396,-0.028932890159641917,True
+nonsensitive,Categorical obf. only (R'),Baseline (R),hr10,0.0017376194613379669,-0.0034752389226759338,0.007819287576020852,False
+nonsensitive,Categorical obf. only (R'),Baseline (R),ret_hr1000,-0.0069504778453518675,-0.01998262380538662,0.0069504778453518675,False
+nonsensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),cat_hr,0.13032145960034752,0.09902258905299739,0.16159860990443092,True
+nonsensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),sem_sim,0.016051444693506542,0.008433210446566447,0.023280825752192067,True
+nonsensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),hr10,-0.0017376194613379669,-0.004344048653344918,0.0,False
+nonsensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),ret_hr1000,0.0008688097306689834,-0.01131624674196351,0.013900955690703735,False
+nonsensitive,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),cat_hr,0.05560382276281494,0.030408340573414423,0.08082102519548216,True
+nonsensitive,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),sem_sim,0.014317273087055138,0.007638722406433237,0.021567707085054687,True
+nonsensitive,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),hr10,-0.0017376194613379669,-0.005212858384013901,0.0008688097306689834,False
+nonsensitive,BERT obf. + deobf. (R''),Categorical obf. + deobf. (R''),ret_hr1000,0.0017376194613379669,-0.015638575152041704,0.019113814074717638,False
+nonsensitive,Baseline (R),Only local,cat_hr,0.21112076455256298,0.1789748045178106,0.24155082536924413,True
+nonsensitive,Baseline (R),Only local,sem_sim,0.0714434087146996,0.06202104454878297,0.08100095699669924,True
+nonsensitive,Baseline (R),Only local,hr10,0.0008688097306689834,-0.0034752389226759338,0.005212858384013901,False
+nonsensitive,Baseline (R),Only local,ret_hr1000,0.015638575152041704,-0.0008688097306689834,0.03214596003475239,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),cat_hr,-0.04778453518679409,-0.07124239791485665,-0.02432667245873154,True
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),sem_sim,-0.004748341220420511,-0.011303646095359226,0.0018640505542394442,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),hr10,-0.0017376194613379669,-0.006081668114682885,0.0017376194613379669,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],Baseline (R),ret_hr1000,0.0,-0.014791485664639442,0.014791485664639423,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),cat_hr,-0.038227628149435276,-0.05560382276281494,-0.021720243266724587,True
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),sem_sim,-0.011037507956179197,-0.015541937274067014,-0.006906928586329355,True
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),hr10,0.0,0.0,0.0,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),ret_hr1000,0.0008688097306689834,-0.008688097306689836,0.010425716768027803,False
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),cat_hr,-0.09643788010425716,-0.12163336229365769,-0.07211120764552563,True
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),sem_sim,-0.006848153445406855,-0.014008908978235347,0.0005784072299899728,False
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),hr10,0.0,-0.005212858384013901,0.005212858384013901,False
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-2B],Baseline (R),ret_hr1000,-0.0034752389226759338,-0.017397914856646393,0.010447437011294507,False
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),cat_hr,0.13292788879235448,0.10338835794960903,0.16507384882710685,True
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),sem_sim,0.029412094616921024,0.02137475578595021,0.037652383095703755,True
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),hr10,-0.0017376194613379669,-0.004344048653344918,0.0,False
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-2B],Categorical obf. only (R'),ret_hr1000,0.0034752389226759338,-0.009556907037358819,0.015638575152041704,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],cat_hr,0.04865334491746308,0.02519548218940052,0.07211120764552563,True
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],sem_sim,0.002099812224986344,-0.00526025976854612,0.009026786538616119,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],hr10,-0.0017376194613379669,-0.005212858384013901,0.0008688097306689834,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],Categorical obf. + deobf. [Qwen3.5-2B],ret_hr1000,0.0034752389226759338,-0.01216333622936577,0.020851433536055605,False
+nonsensitive,Baseline (R),Only local [Qwen3.5-2B],cat_hr,0.16072980017376196,0.13292788879235448,0.18768462206776715,True
+nonsensitive,Baseline (R),Only local [Qwen3.5-2B],sem_sim,0.029206405770839505,0.020781736960998706,0.03799608561400886,True
+nonsensitive,Baseline (R),Only local [Qwen3.5-2B],hr10,0.0026064291920069507,0.0,0.005212858384013901,False
+nonsensitive,Baseline (R),Only local [Qwen3.5-2B],ret_hr1000,-0.0017376194613379669,-0.016507384882710686,0.013900955690703735,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),cat_hr,-0.04257167680278019,-0.06518245004344049,-0.018245004344048653,True
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),sem_sim,-0.0036616666868756276,-0.010264842826743602,0.0025288610608291766,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),hr10,-0.0017376194613379669,-0.006081668114682885,0.0017376194613379669,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],Baseline (R),ret_hr1000,-0.0008688097306689834,-0.015660295395308426,0.013053866203301456,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),cat_hr,-0.03301476976542137,-0.05039096437880104,-0.016507384882710686,True
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),sem_sim,-0.009950833422634314,-0.014580489139029712,-0.005361192175498692,True
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),hr10,0.0,0.0,0.0,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),ret_hr1000,0.0,-0.009578627280625543,0.008688097306689836,False
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),cat_hr,-0.0738488271068636,-0.09730668983492616,-0.04952215464813206,True
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),sem_sim,-0.004109125477557178,-0.012058581245398,0.003835155130999177,False
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),hr10,0.0,-0.005212858384013901,0.005212858384013901,False
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-4B],Baseline (R),ret_hr1000,-0.007819287576020852,-0.022589052997393572,0.006081668114682885,False
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),cat_hr,0.15551694178974804,0.12423979148566464,0.18679409209383144,True
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),sem_sim,0.0321511225847707,0.023975258683389317,0.04006817394666872,True
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),hr10,-0.0017376194613379669,-0.004344048653344918,0.0,False
+nonsensitive,Categorical obf. + deobf. [Qwen3.5-4B],Categorical obf. only (R'),ret_hr1000,-0.0008688097306689834,-0.013900955690703735,0.011294526498696786,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],cat_hr,0.03127715030408341,0.009535186794092095,0.05386620330147698,True
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],sem_sim,0.00044745879068155064,-0.00625177519792427,0.007674671526266817,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],hr10,-0.0017376194613379669,-0.005212858384013901,0.0008688097306689834,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],Categorical obf. + deobf. [Qwen3.5-4B],ret_hr1000,0.0069504778453518675,-0.008688097306689836,0.02432667245873154,False
+nonsensitive,Baseline (R),Only local [Qwen3.5-4B],cat_hr,0.09643788010425716,0.07124239791485665,0.12078627280625541,True
+nonsensitive,Baseline (R),Only local [Qwen3.5-4B],sem_sim,0.015213350142367656,0.0074942683913323425,0.023174328056870468,True
+nonsensitive,Baseline (R),Only local [Qwen3.5-4B],hr10,0.0008688097306689834,-0.0026064291920069507,0.004344048653344918,False
+nonsensitive,Baseline (R),Only local [Qwen3.5-4B],ret_hr1000,-0.0008688097306689834,-0.016507384882710686,0.016507384882710686,False

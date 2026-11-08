@@ -23,8 +23,8 @@ classifier on the user's device decides which purchases reveal a health conditio
 recommends from everything else, and a small on-device LLM recommends for the withheld purchases. The two lists are
 merged in proportion to the two parts of the history.
 
-Every component in this repository runs locally. In our evaluation no user history leaves our machines: an open 9B model
-plays the cloud recommender, and the product labels used for evaluation come from an open model with fixed prompts.
+In the paper the server is GPT-5, called through the OpenAI Batch API with product text only and no user identifiers.
+Every other component, including the product labels used for evaluation, runs on our own hardware with open models.
 
 <p align="center">
   <img src="figures/pipeline.png" width="100%" alt="Pipeline: the obfuscator splits the purchase history into nonsensitive products, sent to the server-side LLM recommender, and sensitive products, which stay on the device and go to the local deobfuscator; the two recommendation lists are merged.">
@@ -32,14 +32,18 @@ plays the cloud recommender, and the product labels used for evaluation come fro
 
 ## Highlights
 
-- **Keeps 75% of sensitive purchases on the device.** No significant difference from sending the full history was
-  detected in category hit rate or semantic similarity (1,295 users, paired bootstrap).
-- **For users whose next purchase is sensitive** (exploratory analysis), withholding sensitive products lowers semantic
-  similarity (−0.033, significant); with the on-device deobfuscator the remaining difference is −0.011 (not
-  significant).
-- **Cost per user** (batch size 1): the BERT obfuscator takes 0.04 s on an RTX A6000 and 0.87 s on a CPU (8 threads);
-  the Llama-3.2-1B deobfuscator takes 1.1 s on the GPU and 15.6 s on the CPU.
-- **Fully local, reproducible evaluation.** Open models in every role, no user data sent to any API.
+With GPT-5 as the server, on 1,295 Amazon users (95% paired-bootstrap intervals in the paper):
+
+- **The server is worth using.** GPT-5 reaches a category hit rate of 0.723 from the full history, against 0.632 for the
+  best on-device model alone (Qwen3.5-4B).
+- **BERT withholding keeps the server's utility.** It keeps 75% of sensitive purchases, and 91% of strictly sensitive
+  ones, on the device; the category hit rate is 0.712 (−0.011, interval [−0.030, +0.012]).
+- **Deleting whole health and beauty categories does not.** It withholds 43% of the history and lowers the category hit
+  rate to 0.463.
+- **The on-device deobfuscator is a trade.** For users whose next purchase is sensitive it raises the category hit rate
+  (+0.049) and semantic similarity (+0.018); for the other users it replaces better GPT-5 recommendations (−0.034), with
+  on-device models of 1B to 4B parameters alike.
+- **Cost per user** (batch size 1): the BERT obfuscator takes 0.04 s on an RTX A6000 and 0.87 s on a CPU (8 threads).
 
 ## Use it in front of any hosted LLM
 
@@ -70,54 +74,45 @@ the withheld products while the server request is in flight, and the two lists a
 | Step | Where it runs | Model in the paper |
 |---|---|---|
 | **Obfuscator** splits the history into nonsensitive $P_{ns}$ and sensitive $P_s$ products | device | BERT-base, fine-tuned with a class-weighted focal loss |
-| **Server recommender** produces $n_{ns}$ recommendations from $P_{ns}$ | server | any instruction-tuned LLM (Qwen3.5-9B in our runs) |
+| **Server recommender** is asked for $n$ recommendations from $P_{ns}$; the device keeps the first $n_{ns}$ | server | any hosted LLM (GPT-5 in the paper; Qwen3.5-9B in Online Resource 1) |
 | **Deobfuscator** produces $n_s$ recommendations from $P_s$ | device | Llama-3.2-1B-Instruct (Qwen3.5-2B / 4B compared) |
-| **Merge** concatenates both lists, $n_s = \mathrm{round}(n\,\lvert P_s\rvert / \lvert P\rvert)$ | device | — |
+| **Merge** concatenates both lists, $n_s = \max(1, \mathrm{round}(n\,\lvert P_s\rvert / \lvert P\rvert))$ if $P_s$ is nonempty | device | — |
 
 The deobfuscator runs in parallel with the server call, so it only adds latency when it is slower than the server.
 
 ## Results
 
-1,295 Amazon users, histories of up to 20 products, 10 recommendations per user; 95% paired-bootstrap confidence intervals in
-the paper.
+1,295 Amazon users, histories of up to 20 products, 10 recommendations per user, GPT-5 as the server; 95% paired-bootstrap
+confidence intervals in the paper and in `results/gpt5/paired.csv`.
 
 <p align="center">
-  <img src="figures/privacy_utility.png" width="92%" alt="Privacy-utility plot.">
+  <img src="figures/privacy_utility.png" width="92%" alt="Privacy-utility plot: share of sensitive history entries sent to the server against category hit rate, for all users and for users whose next purchase is sensitive.">
 </p>
 
-Deleting the three health and beauty categories exposes the fewest sensitive products (10%), but it withholds 43% of
-the history and, without the deobfuscator, lowers category HR@10 from 0.662 to 0.427. The BERT obfuscator withholds
-only 17% of products and stays at the baseline's utility; it exposes 25% of the sensitive products, mostly mildly
-sensitive ones.
+| Configuration | Cat@10 ↑ | Sim@10 ↑ | Sensitive sent (%) ↓ | Strictly sensitive sent (%) ↓ | History sent (%) |
+|---|---:|---:|---:|---:|---:|
+| Cloud only (full history) | 0.723 | 0.344 | 100.0 | 100.0 | 100.0 |
+| On-device only (Llama-3.2-1B) | 0.519 | 0.275 | 0.0 | 0.0 | 0.0 |
+| On-device only (Qwen3.5-4B) | 0.632 | 0.331 | 0.0 | 0.0 | 0.0 |
+| Category deletion | 0.463 | 0.301 | 10.2 | 11.7 | 56.5 |
+| Category deletion + on-device | 0.624 | 0.323 | 10.2 | 11.7 | 56.5 |
+| BERT withholding | 0.712 | 0.347 | 25.1 | 9.3 | 82.5 |
+| BERT withholding + on-device | 0.687 | 0.338 | 25.1 | 9.3 | 82.5 |
+
+The on-device model in the "+ on-device" rows is Llama-3.2-1B; `results/gpt5/results.csv` has every configuration and
+on-device model. **Cat@10**: a recommendation's nearest catalogue product shares the target's main category ·
+**Sim@10**: highest cosine similarity to the target · **Strictly sensitive**: labelled sensitive with a sensitivity score
+of at least 0.8 (products that treat, monitor or manage a specific condition). Exact-item HR@10 is below 0.5% for every
+configuration.
 
 <p align="center">
   <img src="figures/by_target.png" width="92%" alt="Utility for users whose next purchase is sensitive versus nonsensitive.">
 </p>
 
-Averaged over all users, the deobfuscator's contribution with BERT is small, because 89% of next purchases are not
-sensitive. For the 144 users whose next purchase is sensitive, BERT obfuscation alone falls to 0.308 semantic
-similarity (baseline 0.341), and adding the deobfuscator raises it to 0.330. For categorical deletion the deobfuscator
-raises category HR@10 for these users from 0.208 to 0.688. Reference lists that use no LLM reach similar category hit
-rates, so these measures compare configurations rather than establish recommendation quality; see the paper.
-
-<details>
-<summary><b>Full results table</b> (generated from <code>results/results.csv</code>)</summary>
-
-| Configuration | Cat@10 ↑ | Sim@10 ↑ | Ret@1k ↑ | PL<sub>b</sub> (%) ↓ | Sent (%) |
-|---|---:|---:|---:|---:|---:|
-| Baseline: full history to the server | 0.662 | 0.339 | 0.063 | 100.0 | 100.0 |
-| Only local (Llama-3.2-1B, nothing sent) | 0.519 | 0.275 | 0.048 | 0.0 | 0.0 |
-| Categorical deletion | 0.427 | 0.297 | 0.056 | 10.2 | 56.5 |
-| Categorical deletion + deobfuscator | 0.658 | 0.328 | 0.061 | 10.2 | 56.5 |
-| BERT obfuscation | 0.666 | 0.338 | 0.052 | 25.1 | 82.5 |
-| **BERT obfuscation + deobfuscator** | 0.672 | 0.341 | 0.066 | 25.1 | 82.5 |
-
-**Cat@10**: a recommendation's nearest catalogue product shares the target's main category ·
-**Sim@10**: highest cosine similarity to the target ·
-**Ret@1k**: the target ranks in the top 1,000 of 166,590 catalogue products when scored by similarity to the list ·
-**PL<sub>b</sub>**: share of sensitive history products sent to the server ·
-**Sent**: share of all history products sent.
-</details>
+For the 144 users whose next purchase is sensitive, the on-device recommendations restore what withholding loses. For
+the other 1,151 users they take places in the list that GPT-5 would have filled better, so with BERT withholding the net
+effect over all users is a small loss (−0.025 category hit rate); a 4B on-device model does not change this. With
+category deletion, which withholds much more, the on-device model helps everyone (+0.161).
 
 ## What it does not protect against
 
@@ -131,17 +126,19 @@ attribute privacy.
 ```
 privrec/
   data.py          Amazon Reviews 2023 -> histories, targets and catalogue
-  obfuscators.py   categorical rule, BERT obfuscator, split and merge counts
+  obfuscators.py   category deletion, BERT obfuscator, split and merge counts
   llm.py           local generation with truncation handling, list parsing
   prompts.py       the four prompts of the paper (Appendix A), verbatim
   client.py        PrivateRecommender: the framework in front of any hosted LLM (black-box server)
   metrics.py       Cat@10, Sim@10, retrieval HR / MRR, distances, leakage, paired bootstrap
 scripts/
   train_obfuscator.py   fine-tune the BERT obfuscator (focal loss)
-  run_pipeline.py       labels -> obfuscation -> server and on-device recommendations (cached stages)
-  evaluate.py           all metrics, paired tests and the split by target type
+  run_pipeline.py       labels -> obfuscation -> on-device recommendations, and an open server (cached stages)
+  gpt5_server.py        GPT-5 as the server through the OpenAI Batch API (prepare, submit, collect, build)
+  evaluate.py           all metrics, paired tests and the split by target type (--server gpt5 | open)
   make_figures.py       the figures in this README and the paper
-results/                aggregate results of the paper's run (no user identifiers)
+results/gpt5/           GPT-5 answers (indexed u0000.., no user identifiers) and aggregate results of the paper
+results/open_server/    aggregate results with Qwen3.5-9B as the server (Online Resource 1)
 data/                   GPT-4o labels of the obfuscator's 10,012 training products
 figures/
 ```
@@ -158,14 +155,26 @@ pip install -r requirements.txt
 # 2. Obfuscator: download the fine-tuned weights (see "Released artefacts"), or train them from the released labels.
 python scripts/train_obfuscator.py --data data/obfuscator_training_labels.jsonl --out models/bert_obfuscator
 
-# 3. Pipeline (GPU; about 20 GPU-hours on one RTX A6000 for 1,295 users and three deobfuscators)
+# 3. Labels, BERT decisions, on-device recommendations and the open server
+#    (GPU; about 20 GPU-hours on one RTX A6000 for 1,295 users and three deobfuscators)
 python scripts/run_pipeline.py --data-dir data/amazon2023 --users users.txt \
        --bert-dir models/bert_obfuscator --out runs/main
 
-# 4. Metrics, paired bootstrap, split by target type, figures
-python scripts/evaluate.py --out runs/main
-python scripts/make_figures.py figures runs/main
+# 4. GPT-5 as the server (needs OPENAI_API_KEY; about $42 for the three jobs at Batch API prices in Nov 2026).
+#    To reuse our answers instead, copy results/gpt5/answers_*.jsonl to runs/main/gpt5/ and run only `build`.
+for j in full cat bert; do
+  python scripts/gpt5_server.py prepare $j --out runs/main && python scripts/gpt5_server.py submit $j --out runs/main
+done
+python scripts/gpt5_server.py collect full --out runs/main   # likewise cat and bert, once the batches have finished
+python scripts/gpt5_server.py build --out runs/main
+
+# 5. Metrics, paired bootstrap, split by target type
+python scripts/evaluate.py --out runs/main --server gpt5      # -> runs/main/gpt5/
 ```
+
+The GPT-5 answers are indexed by the position of the user in the sorted user list, so they match a run on the same
+users. The open-server results in `results/open_server/` were produced with an earlier merge rule (the server was asked
+for $n_{ns}$ and $n_s$ had no minimum of one); commit `2a56b68` reproduces them.
 
 `users.txt` lists one Amazon `user_id` per line. The list of the paper's 1,295 evaluation users is available from the
 authors on request; any engaged users (at least 30 reviewed products in the ten categories) can be used instead.
@@ -179,6 +188,7 @@ authors on request; any engaged users (at least 30 reviewed products in the ten 
 | Artefact | Where |
 |---|---|
 | Code, prompts, aggregate results, figures | this repository |
+| GPT-5 answers of the paper's run (3,875 responses, no user identifiers) | `results/gpt5/answers_*.jsonl` |
 | Obfuscator training labels (10,012 products, GPT-4o, product metadata only) | `data/obfuscator_training_labels.jsonl` |
 | Fine-tuned BERT obfuscator | Hugging Face Hub: `HF_MODEL_ID` |
 

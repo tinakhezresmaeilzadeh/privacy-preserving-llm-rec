@@ -1,9 +1,10 @@
-"""End-to-end pipeline of the paper, fully local. Every stage is cached in --out, so an interrupted run resumes.
+"""End-to-end pipeline of the paper. Every stage is cached in --out, so an interrupted run resumes.
 
   data     histories, targets and catalogue from the Amazon Reviews 2023 files      -> data.pkl
   labels   independent sensitivity labels and scores (Qwen3.5-9B, Appendix A prompts) -> labels.pkl
   bert     P(sensitive) of the BERT obfuscator for every product                     -> bert.pkl
-  server   server-side recommendations (Qwen3.5-9B) for every configuration         -> server_recs.pkl
+  server   server-side recommendations of an open model (Qwen3.5-9B)                -> server_recs.pkl
+           (the paper's server is GPT-5: scripts/gpt5_server.py writes server_recs_gpt5.pkl instead)
   local    on-device recommendations for each deobfuscator                           -> local_recs_<name>.pkl
 Then run scripts/evaluate.py --out <same dir>.
 
@@ -67,9 +68,7 @@ def server_recs():
     tok, m = llm.load(SERVER); c = lambda t: llm.chat(tok, t, enable_thinking=False)
     jobs = {"full": {u: (H[u], N) for u in users}}
     for o in OBF:
-        jobs[f"{o}_obf"] = {u: (SPLIT[o][u][0], N) for u in users if SPLIT[o][u][0]}  # obfuscation only: all N from the server
-        jobs[f"{o}_srv"] = {u: (SPLIT[o][u][0], ob.counts(*SPLIT[o][u], N)[0]) for u in users
-                            if SPLIT[o][u][0] and ob.counts(*SPLIT[o][u], N)[0]}  # framework: the server's n_ns
+        jobs[f"{o}_obf"] = {u: (SPLIT[o][u][0], N) for u in users if SPLIT[o][u][0]}  # the framework keeps the first n_ns of these
     out = {}
     for k, J in jobs.items():
         us = list(J); raw = llm.generate(tok, m, [c(prompts.SERVER.format(n=J[u][1], h=hist(J[u][0]))) for u in us], 200 * N, 16)

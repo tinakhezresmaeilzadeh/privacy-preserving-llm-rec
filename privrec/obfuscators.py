@@ -39,6 +39,7 @@ def split(history, is_sensitive):
 
 
 def counts(p_ns, p_s, n=10):
-    """(n_ns, n_s): recommendations from the server and from the device, proportional to the two parts."""
-    n_s = int(round(n * len(p_s) / max(1, len(p_ns) + len(p_s)))) if p_ns else n
+    """(n_ns, n_s): recommendations from the server and from the device, proportional to the two parts; a nonempty
+    withheld part gets at least one. The server is always asked for n and the device keeps its first n_ns."""
+    n_s = 0 if not p_s else n if not p_ns else max(1, int(round(n * len(p_s) / (len(p_ns) + len(p_s)))))
     return n - n_s, n_s

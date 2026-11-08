@@ -34,8 +34,8 @@ class PrivateRecommender:
         n_ns, n_s = counts(p_ns, p_s, self.n)
         h = lambda ps: "\n".join(f"{i + 1}. {show(p)}" for i, p in enumerate(ps))
         with ThreadPoolExecutor(1) as ex:
-            remote = ex.submit(self.server, prompts.SERVER.format(n=n_ns, h=h(p_ns))) if n_ns else None
+            remote = ex.submit(self.server, prompts.SERVER.format(n=self.n, h=h(p_ns))) if n_ns else None  # n, so the request does not reveal n_s
             local = llm.generate(self.ltok, self.lm, [llm.chat(self.ltok, prompts.LOCAL.format(n=n_s, h=h(p_s)), **self.kw)],
                                  100 * n_s, 1)[0] if n_s else ""
             remote = remote.result() if remote else ""
-        return llm.parse(remote, n_ns) + llm.parse(local, n_s), len(p_s)
+        return llm.parse(remote, self.n)[:n_ns] + llm.parse(local, n_s), len(p_s)

@@ -4,13 +4,14 @@ Utility (per user, then averaged):
   cat_hr      category HR@10: each recommendation is mapped to its nearest catalogue product (MiniLM cosine); a hit if any
               mapped product has the target's main category (a target without one is never a hit)
   sem_sim     semantic similarity@10: maximum cosine similarity between the target and the recommendations
+  hr10        exact-item HR@10: a hit if the target itself is among the mapped catalogue products
   ret_hr100 / ret_hr1000 / mrr
               item-level retrieval: catalogue products are scored by their maximum cosine to the recommendations and the
               target's rank is recorded (hit if rank <= K; mrr = 1 / rank)
   l1 / l2     distance of the recommended main-category distribution to the same user's baseline distribution
   hb_share    share of recommendations mapped to the health and beauty categories; hb_dev = |hb_share - baseline's|
-Privacy (pooled over users): PL_b = share of sensitive history products sent to the server; PL_s weights each by its
-sensitivity score."""
+Privacy (pooled over users): PL_b = share of sensitive history entries sent to the server; PL_strict = share of strictly
+sensitive entries sent (labelled sensitive and sensitivity score >= 0.8)."""
 import numpy as np, pandas as pd, torch
 from transformers import AutoTokenizer, AutoModel
 
@@ -31,7 +32,7 @@ def embed(texts, device=None, batch_size=512):
     return np.concatenate(out)
 
 
-def per_user(lists, users, T, meta, rec_emb, rec_cat, cat_emb, cat_index, baseline="Baseline (R)"):
+def per_user(lists, users, T, meta, rec_emb, rec_cat, rec_item, cat_emb, cat_index, baseline="Baseline (R)"):
     """DataFrame of per-user utility metrics for every configuration in `lists` ({name: {user: [recommendation]}})."""
     cats = sorted(set(rec_cat.values())); ci = {c: i for i, c in enumerate(cats)}
     def dist(xs):
@@ -52,6 +53,7 @@ def per_user(lists, users, T, meta, rec_emb, rec_cat, cat_emb, cat_index, baseli
         out[k] = pd.DataFrame(dict(
             cat_hr=[float(any(rec_cat[x] == tc(u) for x in V[u])) for u in users],
             sem_sim=[max([float(rec_emb[x] @ tgt[u]) for x in V[u]], default=0.0) for u in users],
+            hr10=[float(any(rec_item[x] == T[u] for x in V[u])) for u in users],
             ret_hr100=(rank <= 100).astype(float), ret_hr1000=(rank <= 1000).astype(float), mrr=1.0 / rank,
             l1=[np.abs(dist(V[u]) - base[u]).sum() for u in users], l2=[np.sqrt(((dist(V[u]) - base[u]) ** 2).sum()) for u in users],
             hb_share=[hb(V[u]) for u in users]), index=users)
@@ -60,10 +62,10 @@ def per_user(lists, users, T, meta, rec_emb, rec_cat, cat_emb, cat_index, baseli
 
 
 def leakage(sent, history_products, sensitive, score):
-    """PL_b, PL_s and the share of history products sent. `sent`: products sent to the server (pooled over users)."""
-    allsens = [a for a in history_products if sensitive[a]]; s = [a for a in sent if sensitive[a]]
-    return dict(PL_b=len(s) / len(allsens), PL_s=sum(score[a] for a in s) / sum(score[a] for a in allsens),
-                sent_items=len(sent) / len(history_products))
+    """PL_b, PL_strict and the share of history entries sent. `sent`: entries sent to the server (pooled over users)."""
+    strict = lambda a: sensitive[a] and score[a] >= 0.8
+    share = lambda f: sum(map(f, sent)) / sum(map(f, history_products))
+    return dict(PL_b=share(lambda a: sensitive[a]), PL_strict=share(strict), sent_items=len(sent) / len(history_products))
 
 
 def paired_bootstrap(x, n=1000, seed=0):
