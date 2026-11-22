@@ -1,0 +1,65 @@
+target,a,b,metric,diff,lo,hi,significant
+sensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),cat_hr,0.020833333333333332,-0.020833333333333332,0.0625,False
+sensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),sem_sim,0.021905981198263664,0.005248764724496545,0.03846968889637436,True
+sensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),ret_hr1000,0.034722222222222224,0.0,0.06944444444444445,False
+sensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),mrr,-3.1816674922125276e-05,-0.0009206945717986385,0.0007069007649633039,False
+sensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),cat_hr,0.4791666666666667,0.3958333333333333,0.5694444444444444,True
+sensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),sem_sim,0.08093082400349279,0.06007497245381172,0.10107326671972663,True
+sensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),ret_hr1000,0.027777777777777776,0.0,0.0625,False
+sensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),mrr,0.0003551443029256314,-3.4755889670449956e-05,0.0009182376578855259,False
+sensitive,BERT obf. + deobf. (R''),Baseline (R),cat_hr,-0.006944444444444444,-0.05555555555555555,0.041666666666666664,False
+sensitive,BERT obf. + deobf. (R''),Baseline (R),sem_sim,-0.01096413865323282,-0.030040938350268536,0.00824825978035935,False
+sensitive,BERT obf. + deobf. (R''),Baseline (R),ret_hr1000,0.0,-0.04861111111111111,0.04861111111111111,False
+sensitive,BERT obf. + deobf. (R''),Baseline (R),mrr,7.23234818975881e-06,-0.0018159753208636207,0.0017257264051095925,False
+sensitive,BERT obf. only (R'),Baseline (R),cat_hr,-0.027777777777777776,-0.08333333333333333,0.021006944444444287,False
+sensitive,BERT obf. only (R'),Baseline (R),sem_sim,-0.03287011985149649,-0.0529753760758063,-0.015181487013534129,True
+sensitive,BERT obf. only (R'),Baseline (R),ret_hr1000,-0.034722222222222224,-0.0763888888888889,0.0,False
+sensitive,BERT obf. only (R'),Baseline (R),mrr,3.904902311188438e-05,-0.0018342577735212218,0.0014764171976576856,False
+sensitive,Categorical obf. + deobf. (R''),Baseline (R),cat_hr,-0.05555555555555555,-0.125,0.013888888888888888,False
+sensitive,Categorical obf. + deobf. (R''),Baseline (R),sem_sim,-0.028950381881764367,-0.04772051654743134,-0.01021497174515389,True
+sensitive,Categorical obf. + deobf. (R''),Baseline (R),ret_hr1000,-0.020833333333333332,-0.0626736111111111,0.020833333333333332,False
+sensitive,Categorical obf. + deobf. (R''),Baseline (R),mrr,-0.0003981419176640772,-0.0017128522390117763,0.0005160339097556417,False
+sensitive,Categorical obf. only (R'),Baseline (R),cat_hr,-0.5347222222222222,-0.625,-0.4444444444444444,True
+sensitive,Categorical obf. only (R'),Baseline (R),sem_sim,-0.10988120588525715,-0.13689735836168337,-0.08425719163141265,True
+sensitive,Categorical obf. only (R'),Baseline (R),ret_hr1000,-0.04861111111111111,-0.09027777777777778,-0.006944444444444444,True
+sensitive,Categorical obf. only (R'),Baseline (R),mrr,-0.0007532862205897088,-0.0021817093055105374,1.0467020517508301e-06,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),cat_hr,0.013888888888888888,-0.027777777777777776,0.05555555555555555,False
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),sem_sim,0.042033426243708365,0.025405489980605326,0.058968874274352046,True
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),ret_hr1000,0.04861111111111111,0.013888888888888888,0.09027777777777778,True
+sensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),mrr,0.0005264989286689543,-0.0005415232002489589,0.001566304045926759,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),cat_hr,0.020833333333333332,-0.020833333333333332,0.0625,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),sem_sim,0.02898479443198691,0.015458407514961437,0.044836122855647566,True
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),ret_hr1000,0.020833333333333332,-0.006944444444444444,0.05555555555555555,False
+sensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),mrr,-0.00017779303797882105,-0.0009902623593099006,0.00032955401536201897,False
+nonsensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),cat_hr,0.0034752389226759338,-0.013900955690703735,0.01998262380538662,False
+nonsensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),sem_sim,0.000812305831759003,-0.003681640200993349,0.005619427544929792,False
+nonsensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),ret_hr1000,0.011294526498696786,0.0008470894874022601,0.020851433536055605,True
+nonsensitive,BERT obf. + deobf. (R''),BERT obf. only (R'),mrr,4.616396492182284e-05,-0.00020937750436996922,0.0002979160780129493,False
+nonsensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),cat_hr,0.1998262380538662,0.17200260642919202,0.22675933970460468,True
+nonsensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),sem_sim,0.024647077608636728,0.017300411626869745,0.03262749365498542,True
+nonsensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),ret_hr1000,0.0026064291920069507,-0.010425716768027803,0.01566029539530841,False
+nonsensitive,Categorical obf. + deobf. (R''),Categorical obf. only (R'),mrr,-0.00011437261517459077,-0.0010574820515408128,0.0006059341712950906,False
+nonsensitive,BERT obf. + deobf. (R''),Baseline (R),cat_hr,0.011294526498696786,-0.0069504778453518675,0.03127715030408341,False
+nonsensitive,BERT obf. + deobf. (R''),Baseline (R),sem_sim,0.004187593948610652,-0.0010336570607192431,0.009486048044450744,False
+nonsensitive,BERT obf. + deobf. (R''),Baseline (R),ret_hr1000,0.0026064291920069507,-0.011294526498696786,0.015638575152041704,False
+nonsensitive,BERT obf. + deobf. (R''),Baseline (R),mrr,-3.6840654377704075e-05,-0.00043749345256444524,0.0003510665476719587,False
+nonsensitive,BERT obf. only (R'),Baseline (R),cat_hr,0.007819287576020852,-0.010447437011294526,0.02519548218940052,False
+nonsensitive,BERT obf. only (R'),Baseline (R),sem_sim,0.0033752881168516483,-0.002555474891148501,0.008828418573071704,False
+nonsensitive,BERT obf. only (R'),Baseline (R),ret_hr1000,-0.008688097306689836,-0.020851433536055605,0.0026064291920069507,False
+nonsensitive,BERT obf. only (R'),Baseline (R),mrr,-8.30046192995269e-05,-0.000440858930813975,0.00022781615140584212,False
+nonsensitive,Categorical obf. + deobf. (R''),Baseline (R),cat_hr,0.0017376194613379669,-0.020873153779322327,0.02347958297132926,False
+nonsensitive,Categorical obf. + deobf. (R''),Baseline (R),sem_sim,-0.008022204583606236,-0.014782677897430962,-0.0014555194210439145,True
+nonsensitive,Categorical obf. + deobf. (R''),Baseline (R),ret_hr1000,0.0,-0.013032145960034752,0.013032145960034752,False
+nonsensitive,Categorical obf. + deobf. (R''),Baseline (R),mrr,0.00035064403377683056,-0.00015388654575495373,0.0008732310549844444,False
+nonsensitive,Categorical obf. only (R'),Baseline (R),cat_hr,-0.19808861859252824,-0.22938748913987836,-0.1676585577758471,True
+nonsensitive,Categorical obf. only (R'),Baseline (R),sem_sim,-0.032669282192242965,-0.041434564356644395,-0.023937428815186762,True
+nonsensitive,Categorical obf. only (R'),Baseline (R),ret_hr1000,-0.0026064291920069507,-0.016507384882710686,0.01216333622936577,False
+nonsensitive,Categorical obf. only (R'),Baseline (R),mrr,0.0004650166489514213,-0.0001754039337349402,0.00131714881736008,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),cat_hr,0.004344048653344918,-0.01216333622936577,0.021720243266724587,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),sem_sim,0.001100822969248355,-0.0031441861948080935,0.005737229778903085,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),ret_hr1000,0.010425716768027803,0.0,0.01998262380538662,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-2B],BERT obf. only (R'),mrr,-9.86463426363912e-05,-0.0002910496531425802,4.739262809109219e-05,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),cat_hr,0.006081668114682885,-0.008688097306689836,0.022610773240660277,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),sem_sim,0.003154241396591624,-0.001314229076707187,0.00824673553770141,False
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),ret_hr1000,0.014769765421372719,0.004344048653344918,0.02432667245873154,True
+nonsensitive,BERT obf. + deobf. [Qwen3.5-4B],BERT obf. only (R'),mrr,-1.9862576107363865e-05,-0.00021796626195333838,0.0001468464378085122,False
